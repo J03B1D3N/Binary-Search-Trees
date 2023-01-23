@@ -64,6 +64,10 @@ function postOrder(node) {
     preOrder(node.right);
     console.log(node.data + " ");
 }
+
+
+
+
 const prettyPrint = (node, prefix = '', isLeft = true) => {
     if (node.right !== null) {
       prettyPrint(node.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
@@ -72,15 +76,33 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
     if (node.left !== null) {
       prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
     }
-  }
+}
  
-// var arr = [1, 2, 3, 4, 5, 6, 7];
+
+function insert(node, value) {
+    if (node == null){
+        node = new Node(value)
+        return node
+    }
+    
+    if(node.data > value){
+        node.left = insert(node.left, value);
+    }
+    
+    if(node.data < value){
+        node.right = insert(node.right, value);
+    }
+    return node
+}
+
+
 var n = sortedArray.length;
 root = sortedArrayToBST(sortedArray, 0, n - 1);
-console.log(root)
 
 prettyPrint(root)
-preOrder(root);
+insert(root, 880)
+prettyPrint(root)
+
  
 
 
