@@ -95,13 +95,28 @@ function insert(node, value) {
     return node
 }
 
+function find(node, value) {
+    if (node == null || node.data == value){
+        return node
+    }
+
+    if(node.data < value){
+        return find(node.right, value);
+    }
+    
+    if(node.data > value){
+        return find(node.left, value);
+    }
+    
+}
+
 
 var n = sortedArray.length;
 root = sortedArrayToBST(sortedArray, 0, n - 1);
 
 prettyPrint(root)
-insert(root, 880)
-prettyPrint(root)
+console.log(find(root, 10))
+
 
  
 
