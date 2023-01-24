@@ -154,7 +154,35 @@ function minValue(node)
         return minv;
 }
 
+function levelOrder(){
+    let currentNode = root
+    let queue = []
+    let results = []
+    queue.push(currentNode)
+    while(queue.length){
+        currentNode = queue.shift()
+        results.push(currentNode.value)
+        if(currentNode.left) queue.push(currentNode.left)
+        if(currentNode.right) queue.push(currentNode.right)
+    }
+    return results
+}
 
+function findHeight(node, value) {
+    if (node == null)
+    {
+        return -1
+    }
+
+    let leftHeight = findHeight(node.left);
+    let rightHeight = findHeight(node.right);
+    let answer = Math.max(leftHeight, rightHeight) +1;
+
+    if(node.data == value){
+        return answer
+    }
+    return answer
+}
 
 
 var n = sortedArray.length;
@@ -164,6 +192,10 @@ prettyPrint(root)
 deleteRec(root, 500)
 prettyPrint(root)
 console.log(root)
+console.log(findHeight(root))
+insert(root, 1100)
+console.log(findHeight(root))
+
 
 
 
