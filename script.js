@@ -183,6 +183,53 @@ function findHeight(node, value) {
     }
     return answer
 }
+function findDepth(node, x)
+{
+      
+    // Base case
+    if (node == null)
+        return -1;
+  
+    // Initialize distance as -1
+    let dist = -1;
+  
+    // Check if x is current node=
+    if ((node.data == x)|| 
+      
+        // Otherwise, check if x is
+        // present in the left subtree
+        (dist = findDepth(node.left, x)) >= 0 || 
+          
+        // Otherwise, check if x is
+        // present in the right subtree
+        (dist = findDepth(node.right, x)) >= 0)
+  
+        // Return depth of the node
+        return dist + 1;
+          
+    return dist;
+}
+
+function isBalanced(node){
+     
+    // Base condition
+    if(node == null)
+        return true
+ 
+    // for left and right subtree height
+    let lh = height(node.left)
+    let rh = height(node.right)
+ 
+    // allowed values for (lh - rh) are 1, -1, 0
+    if (Math.abs(lh - rh) <= 1 && isBalanced(
+    node.left)== true && isBalanced( node.right) == true)
+        return true
+ 
+    // if we reach here means tree is not
+    // height-balanced tree
+    return false
+}
+
 
 
 var n = sortedArray.length;
