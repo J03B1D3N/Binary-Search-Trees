@@ -1,3 +1,5 @@
+import Node from "./nodeClass.js";
+
 function sortedArrayToBST(arr, start, end){
 
     if (start > end)

@@ -1,3 +1,4 @@
+import Node from "./nodeClass.js";
 function insertValue(node, value) {
     if (node == null){
         node = new Node(value)
@@ -5,11 +6,11 @@ function insertValue(node, value) {
     }
     
     if(node.data > value){
-        node.left = insert(node.left, value);
+        node.left = insertValue(node.left, value);
     }
     
     if(node.data < value){
-        node.right = insert(node.right, value);
+        node.right = insertValue(node.right, value);
     }
     return node
 }
